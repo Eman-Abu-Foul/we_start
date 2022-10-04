@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'cairo';
+    src: url(../fonts/Cairo-VariableFont_wght.ttf);
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+}

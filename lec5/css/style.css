@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'cairo';
+    src: url(../fonts/Cairo-VariableFont_wght.ttf);
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    padding-top: 84px;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+header{
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+header a{
+    color: #fff;
+    text-decoration: none;
+}
+header nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .logo img{
+    width: 65px;
+    height: 60px;
+}
+header ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+header ul li{
+    margin: 0 15px;
+}
+
+
+.hero img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover; 
+    
+}
+
+.par{
+    
+    text-align: center;
+    
+}
+.par h2{
+    
+    font-size: 32px;
+    text-transform: uppercase;
+    font-family: 'cairo';
+}
+.par p{
+    font-size: 22px;
+}
+.container img{
+    max-width: 100%;
+    height:500px;
+    object-fit: cover;
+}
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(206, 206, 206);
+}
+.container .wrapper .par {
+    padding: 30px;
+}
+.container .wrapper .par h2{
+
+   
+    color: rgb(5, 0, 64);
+}
+.container .wrapper .par p{
+    
+    font-size: 20px;
+    line-height: 35px;
+}
+.card{
+    border-radius: 5px;
+    overflow: hidden;
+     width: 32%;
+     box-shadow: 0 0 15px rgb(206, 206, 206);
+ }
+ .card img{
+     width: 100%;
+     height: 320px;
+     object-fit: cover;
+ }
+ .card .content{
+     padding: 20px;
+ }
+ .card .content h2{
+     margin-top: 0;
+     font-family: 'cairo';
+     color: rgb(42, 63, 255);;
+ }
+ 
+ .card .content h2 a{
+     text-decoration: none;
+     color: inherit;
+ }
+ .card a.btn{
+     display: block;
+     background-color:rgb(42, 63, 255);;
+     text-decoration: none;
+     padding: 10px;
+     border-radius: 5px;
+     text-align: center;
+     color:#fff;
+     border: 2px solid transparent;
+     transition: all .3s ease;
+ }
+ .card a.btn:hover{
+     color:rgb(42, 63, 255);;
+     background-color:#fff;
+     border-color: rgb(42, 63, 255);;
+ }
+ .fmap{
+    display: flex;
+    justify-content: space-between;
+    
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(206, 206, 206);
+ }
+ .map h1{
+    text-align: center;
+ }
+ form{
+    padding-top: 50px;
+ }
+ form input {
+    background: #fff;
+    border: solid #6a6a6a 1px;
+    padding-top: 10px ;
+    margin: 35px;
+    width: 80%;
+    font-size: 18px;
+    text-transform: capitalize;
+    line-height: normal;
+ }
+ textarea{
+    background: #fff;
+    border: solid #6a6a6a 1px;
+    padding-top: 60px ;
+    margin: 35px;
+    width: 80%;
+    font-size: 18px;
+    text-transform: capitalize;
+    line-height: normal;
+ }
+ footer{
+    background-color: #1a1818;
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+ }
+
+ .save{
+    display: block;
+    background-color:#2f377c;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color:#fff;
+    border: 2px solid transparent;
+    transition: all .3s ease;
+}
+.save:hover{
+    color:#2f377c;
+    background-color:#fff;
+    border-color: #2f377c;
+}

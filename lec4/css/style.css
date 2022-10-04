@@ -1,0 +1,112 @@
+
+@font-face {
+    font-family: 'cairo';
+    src: url(../fonts/Cairo-VariableFont_wght.ttf);
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    box-shadow: 0 1px 15px #c2c2c2  ;
+    width: 100%;
+    padding: 10px 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img{
+    border: 50% solid transparent;
+    height: 50px;
+    width: 60px;
+}
+header .menu ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+header .menu ul li{
+    display: inline-block;
+    margin: 0 20px;
+
+}
+header .menu ul li a{
+    color: rgb(44, 44, 44);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+}
+header .menu ul li a:hover{
+    color: #ff0000;
+    border-bottom: 1px solid #ff0000;
+}
+
+.hero{
+background-image: url('../images/kk.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+height: 500px;
+text-align: center;
+padding-top: 100px ;
+}
+.hero h1{
+    color:#fff;
+    font-size: 50px;
+    margin: 0px;
+    text-transform: uppercase;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+.wrapper{
+display: flex;
+justify-content: space-between;
+margin: 50px 0;
+}
+.card{
+   border-radius: 5px;
+   overflow: hidden;
+    width: 32%;
+    box-shadow: 0 0 15px rgb(206, 206, 206);
+}
+.card img{
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+.card .content{
+    padding: 20px;
+}
+.card .content h2{
+    margin-top: 0;
+    font-family: 'cairo';
+    color: rgb(42, 63, 255);;
+}
+
+.card .content h2 a{
+    text-decoration: none;
+    color: inherit;
+}
+.card a.btn{
+    display: block;
+    background-color:rgb(42, 63, 255);;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color:#fff;
+    border: 2px solid transparent;
+    transition: all .3s ease;
+}
+.card a.btn:hover{
+    color:rgb(42, 63, 255);;
+    background-color:#fff;
+    border-color: rgb(42, 63, 255);;
+}
