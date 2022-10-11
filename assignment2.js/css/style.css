@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'cairo';
+    src: url(../fonts/Cairo-VariableFont_wght.ttf);
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'cairo';
+}
+   
+#context-menu {
+    position: fixed;
+    z-index: 10000;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(37, 40, 42, 0.22);
+    color: #1f194c;
+    width: 150px;
+    padding: 10px 20px;
+    transform: scale(0);
+    transform-origin: top left;
+}
+
+#context-menu.active{
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+}
+ 
+#context-menu .item {
+    padding: 5px 25px;
+}
+   
+#context-menu .item:hover {
+    background-color: rgba(44, 141, 247, 0.2);
+    cursor: pointer;
+}
