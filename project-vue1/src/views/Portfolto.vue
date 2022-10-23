@@ -7,7 +7,7 @@
                     <h2>My Work</h2>
                 </div>
                 <div class="blogs">
-                    <product v-for="product in products" :key="product.id" :product="product"/>
+                    <product v-for="(product, i) in products" :key="i" :product="product"/>
                 </div>
             </div>
         
@@ -22,7 +22,7 @@
                     <input type="checkbox" name="checkbox" v-model="selected_categories" :value="cat" />
                     {{ cat }}
                 </label>
-                {{ selected_categories }}
+               
             </div>
             
             
@@ -52,12 +52,14 @@ export default {
     },
     methods:{
         filterProducts() {
+            // console.log('Done');
             this.products = this.baseproducts
             if(this.selected_categories.length > 0) {
                 console.log(this.selected_categories.length);
-                this.products = this.baseproducts.filter(p => this.selected_categories.includes(p.category))
-            
+                // this.products = this.baseproducts.filter(p => this.selected_categories.some(p.category))
+                this.products = this.baseproducts.filter(p => p.category.some(c => this.selected_categories.includes(c)))
             }
+            
            
         }
     }
