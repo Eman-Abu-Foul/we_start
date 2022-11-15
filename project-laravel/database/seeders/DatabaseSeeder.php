@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         Place::truncate();
 
         User::factory(10)->create();
-        City::factory(10)->create();
-        Place::factory(30)->create();
+        City::factory(70)->create();
+//        Place::factory(30)->create();
 
 
 

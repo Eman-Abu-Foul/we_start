@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use Illuminate\Http\Request;
+use function GuzzleHttp\Promise\all;
 
 class CityController extends Controller
 {
@@ -13,13 +14,23 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cities = City::all();
-        return view('admin.cities.index',
-            [
-                'cities'=>$cities
-            ]
+//        dd($request->all());
+        $count =10;
+        if($request->has($count)){
+            $count = $request->count;
+//            if($request->count == 'all'){
+//                $count = City::count();
+//            }
+        }
+        $cities = City::latest('id')->paginate($count);
+
+        if($request->has('search')){
+            $cities = City::where('name','like' , '%'. $request->search .'%')->latest('id')->paginate(10);
+        }
+
+        return view('admin.cities.index', ['cities'=>$cities]
         );
     }
 
@@ -30,7 +41,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cities.create');
     }
 
     /**
@@ -41,7 +52,11 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        City::create([
+            'name'=>$request->name,
+        ]);
+        return redirect()->route('admin.cities.index');
+
     }
 
     /**

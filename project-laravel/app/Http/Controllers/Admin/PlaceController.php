@@ -13,9 +13,20 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $count =10;
+        if($request->has($count)){
+            $count = $request->count;
+        }
+        $places = Place::latest('id')->paginate($count);
+
+        if($request->has('search')){
+            $places = Place::where('name','like' , '%'. $request->search .'%')->latest('id')->paginate(10);
+        }
+
+        return view('admin.places.index', ['places'=>$places]
+        );
     }
 
     /**
@@ -25,7 +36,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.places.create');
     }
 
     /**

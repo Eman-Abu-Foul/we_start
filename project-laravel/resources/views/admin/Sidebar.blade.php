@@ -55,8 +55,8 @@
     </a>
     <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="buttons.html">All Places</a>
-            <a class="collapse-item" href="cards.html">Create New Place</a>
+            <a class="collapse-item" href="{{ route('admin.places.index') }}">All Places</a>
+            <a class="collapse-item" href="{{ route('admin.places.create') }}">Create New Place</a>
         </div>
     </div>
 </li>
