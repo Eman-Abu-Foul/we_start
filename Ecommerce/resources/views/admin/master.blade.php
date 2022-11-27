@@ -137,16 +137,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large"></i>
-                </a>
-            </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#">
+                            <div class="user-panel pb-3 d-flex">
+                                <div class="image">
+                                    <img style="width: 1.8rem" src="{{ asset('admin_assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image') }}">
+                                </div>
+                                <div class="info">
+                                    {{ Auth::user()->name }}
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user mr-2"></i> {{ __('admin.Profile') }}
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog mr-2"></i> {{ __('admin.Settings') }}
+                            </a>
+                            <div class="dropdown-divider"></div>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+            this.closest('form').submit();">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> {{ __('admin.Logout') }}
+                                </a>
+                            </form>
+                        </div>
+                    </li>
+
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -162,36 +184,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ asset('admin_assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
-            </div>
 
-            <!-- SidebarSearch Form -->
-            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                            <i class="fas fa-search fa-fw"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+
+
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="{{ route('admin.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                {{ __('admin.Dashboard') }}
+                            </p>
+                        </a>
+                    </li>
+
                     <li class="nav-item menu">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-
+                            <i class="nav-icon fas fa-tags"></i>
                             <p>
                                 {{ __('admin.categories') }}
                                 <i class="right fas fa-angle-left"></i>
@@ -215,8 +228,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item menu">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-
+                            <i class="nav-icon fas fa-heart"></i>
                             <p>
                                 {{ __('admin.products') }}
                                 <i class="right fas fa-angle-left"></i>
@@ -233,6 +245,90 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('admin.new_product') }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-percent"></i>
+                            <p>
+                                {{ __('admin.Coupons') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('admin.All Coupons') }}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('admin.Add New') }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>
+                                {{ __('admin.Orders') }}
+                                <span class="right badge badge-danger">20</span>
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-money-bill"></i>
+                            <p>
+                                {{ __('admin.Payments') }}
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                {{ __('admin.Customers') }}
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-tie"></i>
+                            <p>
+                                {{ __('admin.Admins') }}
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-shield-alt"></i>
+                            <p>
+                                {{ __('admin.Roles') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('admin.All Roles') }}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('admin.Add New') }}</p>
                                 </a>
                             </li>
                         </ul>

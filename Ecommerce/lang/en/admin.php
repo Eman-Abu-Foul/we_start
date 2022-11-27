@@ -25,5 +25,17 @@ return [
     'search' => 'Search',
     'search_category' => 'Search By Name Category',
     'entries' => 'Entries',
-
+    'Profile' => 'Profile',
+    'Settings' => 'Settings',
+    'Logout' => 'Logout',
+    'All Coupons' => 'All Coupons',
+    'Add New' => 'Add New',
+    'Orders' => 'Orders',
+    'Payments' => 'Payments',
+    'Customers' =>'Customers',
+    'Admins' => 'Admins',
+    'Roles' => 'Roles',
+    'All Roles' => 'All Roles',
+    'Coupons' => 'Coupons',
+    'Dashboard' => 'Dashboard',
 ];

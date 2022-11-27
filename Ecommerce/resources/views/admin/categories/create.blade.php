@@ -22,14 +22,14 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>{{ __('admin.en_name') }}</label>
-                                <input type="text" name="en_name" class="form-control" placeholder="{{ __('admin.enter_en_name') }}">
+                                <input type="text" name="en_name" class="form-control  @error('en_name') is-invalid @enderror" placeholder="{{ __('admin.enter_en_name') }}">
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="form-group">
                                 <label>{{ __('admin.ar_name') }}</label>
-                                <input type="text" name="ar_name" class="form-control" placeholder="{{ __('admin.enter_ar_arabic') }}">
+                                <input type="text" name="ar_name" class="form-control @error('ar_name') is-invalid @enderror" placeholder="{{ __('admin.enter_ar_arabic') }}">
                             </div>
                         </div>
                     </div>
@@ -37,14 +37,15 @@
                     <div class="form-group">
                         <label for="inputImage">{{ __('admin.image') }}</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="image" id="inputImage">
+                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror" name="image" id="inputImage">
                             <label class="custom-file-label" for="inputImage">{{ __('admin.choose_file') }}</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>{{ __('admin.parent') }} </label>
-                        <select name="parent_id" class="form-control custom-select">
+                        <select name="parent_id" class="form-control custom-select @error('parent_id') is-invalid @enderror">
+
                             <option value="">-- Select --</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>

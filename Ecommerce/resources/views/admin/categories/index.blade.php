@@ -4,7 +4,11 @@
     <h1 class="m-0">{{ __('admin.all_categories') }}</h1>
 @stop
 @section('content')
-
+    @if (session('msg'))
+        <div class="alert alert-{{ session('type') }}">
+            {{ session('msg') }}
+        </div>
+    @endif
     <form method="GET" id="search-form" action="{{ route('admin.categories.index') }}">
         <div class="m-sm-2">
             <div class="row d-flex justify-content-between align-items-center">
@@ -37,7 +41,8 @@
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>{{ __('admin.name') }}</th>
+                    <th>{{ __('admin.en_name') }}</th>
+                    <th>{{ __('admin.ar_name') }}</th>
                     <th>{{ __('admin.image') }}</th>
                     <th>{{ __('admin.parent') }}</th>
                     <th>{{ __('admin.actions') }}</th>
@@ -47,8 +52,9 @@
                 @forelse ($categories as $category)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->image }}</td>
+                        <td>{{ $category->en_name }}</td>
+                        <td>{{ $category->ar_name }}</td>
+                        <td><img width="70" src="{{ asset($category->image->path) }}" alt=""></td>
                         <td>{{ $category->parent_id }}</td>
                         <td>
                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>

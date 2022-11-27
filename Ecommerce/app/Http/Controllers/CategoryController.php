@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -40,7 +41,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::select(['id', 'name'])->get();
+//        $categories = Category::select(['id', 'name'])->get();
+        $categories = Category::all();
         return view('admin.categories.create',
             [
                 'categories' => $categories
@@ -53,9 +55,38 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        dd($request->all());
+        $validated = $request->validated();
+        if (!$validated->fails()) {
+            $image = $request->file('image')->store('uploads/categories', 'custom');
+
+            $name = [
+                'en' => $request->en_name,
+                'ar' => $request->ar_name
+            ];
+
+            $name = json_encode($name, JSON_UNESCAPED_UNICODE);
+
+
+            $category = Category::create([
+                'name' => $name,
+                'slug' => Str::slug($request->en_name),
+                'parent_id' => $request->parent_id,
+            ]);
+
+            $category->image()->create([
+                'path' => $image,
+                'feature' => 1
+            ]);
+
+            return redirect()->route('admin.categories.index')->with('msg', 'Category created successfullly')->with('type', 'success');
+
+        }else{
+            return redirect()->back()
+                ->withErrors($validated)
+                ->withInput();
+        }
     }
 
     /**

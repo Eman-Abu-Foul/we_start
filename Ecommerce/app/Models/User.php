@@ -50,4 +50,28 @@ class User extends Authenticatable
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function order_items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
