@@ -194,7 +194,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="{{ route('admin.index') }}" class="nav-link">
+                        <a href="{{ route('admin.index') }}" class="nav-link {{ active('admin.index') }}">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 {{ __('admin.Dashboard') }}
@@ -202,8 +202,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
 
-                    <li class="nav-item menu">
-                        <a href="#" class="nav-link">
+                    <li class="nav-item menu {{ active('categories', 'menu-open') }}">
+                        <a href="#" class="nav-link {{ active('categories') }}">
                             <i class="nav-icon fas fa-tags"></i>
                             <p>
                                 {{ __('admin.categories') }}
@@ -212,13 +212,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('admin.categories.index') }}" class="nav-link">
+                                <a href="{{ route('admin.categories.index') }}" class="nav-link {{ active('admin.categories.index') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('admin.all_categories') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.categories.create') }}" class="nav-link">
+                                <a href="{{ route('admin.categories.create') }}" class="nav-link {{ active('admin.categories.create') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('admin.new_category') }}</p>
                                 </a>

@@ -48,7 +48,7 @@
 
                             <option value="">-- Select --</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->trans_name }}</option>
                             @endforeach
                         </select>
                     </div>

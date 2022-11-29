@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -55,22 +56,20 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        $validated = $request->validated();
+        $validated = Validator::make($request->all(), [
+            'en_name' =>'required',
+            'ar_name' =>'required',
+            'parent_id' => 'nullable'
+//                |exists|:categories,id
+        ]);
+//        $validated = $request->validated();
         if (!$validated->fails()) {
             $image = $request->file('image')->store('uploads/categories', 'custom');
 
-            $name = [
-                'en' => $request->en_name,
-                'ar' => $request->ar_name
-            ];
-
-            $name = json_encode($name, JSON_UNESCAPED_UNICODE);
-
-
             $category = Category::create([
-                'name' => $name,
+                'name' => '',
                 'slug' => Str::slug($request->en_name),
                 'parent_id' => $request->parent_id,
             ]);

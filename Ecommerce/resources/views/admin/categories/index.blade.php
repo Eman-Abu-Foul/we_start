@@ -9,7 +9,8 @@
             {{ session('msg') }}
         </div>
     @endif
-    <form method="GET" id="search-form" action="{{ route('admin.categories.index') }}">
+{{--    action="{{ route('admin.categories.index') }}--}}
+    <form method="GET" id="search-form" ">
         <div class="m-sm-2">
             <div class="row d-flex justify-content-between align-items-center">
                 <div class="col-sm-4">
@@ -28,7 +29,7 @@
                             <option {{ request()->count == 10 ? 'selected' : '' }} value="10">10</option>
                             <option {{ request()->count == 25 ? 'selected' : '' }} value="25">25</option>
                             <option {{ request()->count == 50 ? 'selected' : '' }} value="50">50</option>
-                            <option {{ request()->count == $categories->total() ? 'selected' : '' }} value="{{ $categories->total() }}">all</option>
+{{--                            <option {{ request()->count == $categories->total() ? 'selected' : '' }} value="{{ $categories->total() }}">all</option>--}}
                         </select>
                         <label>{{ __('admin.entries') }}</label>
                     </div>
@@ -49,30 +50,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse ($categories as $category)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $category->en_name }}</td>
-                        <td>{{ $category->ar_name }}</td>
-                        <td><img width="70" src="{{ asset($category->image->path) }}" alt=""></td>
-                        <td>{{ $category->parent_id }}</td>
-                        <td>
-                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                            <form class="d-inline" action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button onclick="return confirm('Are you sure?!')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5">{{ __('admin.no_data_found') }}</td>
-                    </tr>
-                @endforelse
+{{--                @forelse ($categories as $category)--}}
+{{--                    <tr>--}}
+{{--                        <td>{{ $loop->iteration }}</td>--}}
+{{--                        <td>{{ $category->en_name }}</td>--}}
+{{--                        <td>{{ $category->ar_name }}</td>--}}
+{{--                        <td><img width="70" src="{{ asset($category->image->path) }}" alt=""></td>--}}
+{{--                        <td>{{ $category->parent_id }}</td>--}}
+{{--                        <td>--}}
+{{--                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>--}}
+{{--                            <form class="d-inline" action="{{ route('admin.categories.destroy', $category->id) }}" method="post">--}}
+{{--                                @csrf--}}
+{{--                                @method('delete')--}}
+{{--                                <button onclick="return confirm('Are you sure?!')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>--}}
+{{--                            </form>--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
+{{--                @empty--}}
+{{--                    <tr>--}}
+{{--                        <td colspan="5">{{ __('admin.no_data_found') }}</td>--}}
+{{--                    </tr>--}}
+{{--                @endforelse--}}
                 </tbody>
             </table>
-    {{ $categories->appends($_GET)->links() }}
+{{--    {{ $categories->appends($_GET)->links() }}--}}
 {{--    {{ $categories->links() }}--}}
 
 @endsection

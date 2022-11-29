@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -36,6 +37,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('index');
+//        Route::get('/categoriesShow',[CategoryController::class, 'index'])->name('cat.index');
+//        Route::view('/categoriesShow','admin.categories.index');
         Route::resource('/categories',CategoryController::class);
     });
 });
+
