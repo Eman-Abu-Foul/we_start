@@ -2,24 +2,29 @@
 
 namespace App\Models;
 
+use App\Traits\Trans;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Trans;
     protected $guarded = [];
+    protected $appends = [ 'trans_name','en_name', 'ar_name'];
 
     public function category()
     {
         return $this->belongsTo(Category::class)->withDefault();
     }
 
-    public function images()
+    public function image()
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'imageable')->where('feature', 1);
     }
-
+    public function gallery()
+    {
+        return $this->morphMany(Image::class, 'imageable')->where('feature', 0);
+    }
     public function reviews()
     {
         return $this->hasMany(Review::class);

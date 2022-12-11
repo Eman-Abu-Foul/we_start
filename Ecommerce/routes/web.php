@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +39,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('index');
-//        Route::get('/categoriesShow',[CategoryController::class, 'index'])->name('cat.index');
-//        Route::view('/categoriesShow','admin.categories.index');
         Route::resource('/categories',CategoryController::class);
+        Route::resource('/products',ProductController::class);
+        Route::resource('/coupons',CouponController::class);
+        Route::post('add-new-image', [ProductController::class, 'add_image'])->name('add_image');
+
     });
 });
 

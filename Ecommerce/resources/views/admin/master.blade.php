@@ -226,8 +226,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-                    <li class="nav-item menu">
-                        <a href="#" class="nav-link">
+                    <li class="nav-item menu {{ active('products', 'menu-open') }}">
+                        <a href="#" class="nav-link {{ active('products') }}">
                             <i class="nav-icon fas fa-heart"></i>
                             <p>
                                 {{ __('admin.products') }}
@@ -236,21 +236,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href=" {{ route('admin.products.index') }} " class="nav-link {{ active('admin.products.index') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('admin.all_products') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.products.create') }}" class="nav-link {{ active('admin.products.create') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('admin.new_product') }}</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
+                    <li class="nav-item menu {{ active('coupons', 'menu-open') }}">
+                        <a href="#" class="nav-link {{ active('coupons') }}">
                             <i class="nav-icon fas fa-percent"></i>
                             <p>
                                 {{ __('admin.Coupons') }}
@@ -259,15 +259,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href=" {{ route('admin.coupons.index') }} " class="nav-link {{ active('admin.coupons.index') }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>{{ __('admin.All Coupons') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.coupons.create') }}" class="nav-link {{ active('admin.coupons.create') }}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('admin.Add New') }}</p>
+                                    <p>{{ __('admin.new_coupons') }}</p>
                                 </a>
                             </li>
                         </ul>

@@ -25,5 +25,21 @@ return [
     'search' => 'بحث',
     'search_category' => 'بحث عن طريق الاسم',
     'entries' => 'مدخلات',
+    'Profile' => 'الملف الشخصي',
+    'Settings' => 'الاعدادات',
+    'Logout' => 'تسجيل خروج',
+    'All Coupons' => 'جميع الكوبون',
+    'Add New' => 'اضافة جديد',
+    'Orders' => 'الطلبات',
+    'Payments' => 'قائمة الدفع',
+    'Customers' =>'الزبائن',
+    'Admins' => 'الاعضاء',
+    'Roles' => 'الشروط',
+    'All Roles' => 'جميع الشروط',
+    'Coupons' => 'الكوبون',
+    'Dashboard' => 'لوحة التحكم',
+    'created_at' => 'تاريخ الانشاء',
+    //
+
 
 ];

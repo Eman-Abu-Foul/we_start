@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title','Dashboard | '.env('APP_NAME'))
+@section('title','Create category | '.env('APP_NAME'))
 
 @section('content')
     <div class="col-md-12">
@@ -23,6 +23,9 @@
                             <div class="form-group">
                                 <label>{{ __('admin.en_name') }}</label>
                                 <input type="text" name="en_name" class="form-control  @error('en_name') is-invalid @enderror" placeholder="{{ __('admin.enter_en_name') }}">
+                                @error('en_name')
+                                <small class="invalid-feedback">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 
@@ -30,6 +33,9 @@
                             <div class="form-group">
                                 <label>{{ __('admin.ar_name') }}</label>
                                 <input type="text" name="ar_name" class="form-control @error('ar_name') is-invalid @enderror" placeholder="{{ __('admin.enter_ar_arabic') }}">
+                                @error('ar_name')
+                                <small class="invalid-feedback">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -39,6 +45,9 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input @error('image') is-invalid @enderror" name="image" id="inputImage">
                             <label class="custom-file-label" for="inputImage">{{ __('admin.choose_file') }}</label>
+                            @error('image')
+                            <small class="invalid-feedback">{{ $message }}</small>
+                            @enderror
                         </div>
                     </div>
 
@@ -51,6 +60,9 @@
                                 <option value="{{ $category->id }}">{{ $category->trans_name }}</option>
                             @endforeach
                         </select>
+                        @error('parent_id')
+                        <small class="invalid-feedback">{{ $message }}</small>
+                        @enderror
                     </div>
 
 

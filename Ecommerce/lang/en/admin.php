@@ -38,4 +38,10 @@ return [
     'All Roles' => 'All Roles',
     'Coupons' => 'Coupons',
     'Dashboard' => 'Dashboard',
+    'created_at' => 'Created At',
+    //
+    'search_product' => 'Search By Name Product',
+    'search_coupon' => 'Search By Name Coupon',
+    'all_coupons' => 'All Coupons',
+    'new_coupons' => 'Create New Coupon',
 ];

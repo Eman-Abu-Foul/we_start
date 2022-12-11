@@ -15,7 +15,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryRequest $request)
+    public function index(Request $request)
     {
         $count =10;
         if($request->has($count)){
@@ -61,10 +61,12 @@ class CategoryController extends Controller
         $validated = Validator::make($request->all(), [
             'en_name' =>'required',
             'ar_name' =>'required',
-            'parent_id' => 'nullable'
+            'parent_id' => 'nullable',
+            'image' => 'required',
 //                |exists|:categories,id
         ]);
 //        $validated = $request->validated();
+
         if (!$validated->fails()) {
             $image = $request->file('image')->store('uploads/categories', 'custom');
 
@@ -96,7 +98,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return $category->load('parent', 'image');
     }
 
     /**
@@ -119,9 +121,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
-    }
+        $category->update([
+            'name' => '',
+            'parent_id' => $request->parent_id
+        ]);
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('uploads/categories', 'custom');
+            $category->image()->update([
+                'path' => $image
+            ]);
+        }
+
+        return $category->load('parent', 'image');
+
+    }
     /**
      * Remove the specified resource from storage.
      *

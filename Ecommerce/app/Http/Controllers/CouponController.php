@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coupon;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -12,9 +13,21 @@ class CouponController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+//        $count =10;
+//        if($request->has($count)){
+//            $count = $request->count;
+//
+//        }
+//        $coupons = Coupon::latest('id')->paginate($count);
+//
+//        if($request->has('search')){
+//            $coupons = Coupon::where('name','like' , '%'. $request->search .'%')->latest('id')->paginate(10);
+//        }
+
+        $coupons = Coupon::latest('id')->paginate(10);
+        return view('admin.coupons.index', compact('coupons'));
     }
 
     /**
@@ -24,7 +37,8 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        return view('admin.coupons.create',['products'=>$products]);
     }
 
     /**
@@ -35,7 +49,16 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Coupon::create([
+            'name' => '',
+            'code' => $request->code,
+            'type' => $request->type,
+            'value' => $request->value,
+            'expire' => $request->expire,
+            'usage' => $request->usage,
+            'product_id' => $request->product_id,
+        ]);
+        return redirect()->route('admin.coupons.index')->with('msg', 'Coupon created successfully')->with('type', 'success');
     }
 
     /**
@@ -46,7 +69,8 @@ class CouponController extends Controller
      */
     public function show(Coupon $coupon)
     {
-        //
+        return redirect()->route('admin.coupons.index',['coupon'=>$coupon]);
+//        return $coupon;
     }
 
     /**
@@ -69,7 +93,17 @@ class CouponController extends Controller
      */
     public function update(Request $request, Coupon $coupon)
     {
-        //
+        $coupon->update([
+            'name' => '',
+            'code' => $request->code,
+            'type' => $request->type,
+            'value' => $request->value,
+            'expire' => $request->expire,
+            'usage' => $request->usage,
+            'product_id' => $request->product_id
+        ]);
+
+        return $coupon;
     }
 
     /**
@@ -80,6 +114,8 @@ class CouponController extends Controller
      */
     public function destroy(Coupon $coupon)
     {
-        //
+        $coupon->delete();
+
+        return redirect()->route('admin.coupons.index')->with('msg', 'Coupon deleted successfullly')->with('type', 'danger');
     }
 }
