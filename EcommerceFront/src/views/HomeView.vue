@@ -1,7 +1,7 @@
 <template>
  <div>
         <!-- banner -->
-        <div class="bg-cover bg-no-repeat bg-center py-36" style="background-image: url('./src/assets/images/banner-bg.jpg');">
+        <div class="bg-cover bg-no-repeat bg-center py-36" style="background-image: url('./src/assets/images/banner-bg.jpg')">
         <div class="container">
             <h1 class="text-6xl text-gray-800 font-medium mb-4 capitalize">
                 best collection for <br> home decoration
@@ -28,14 +28,14 @@
                 </div>
             </div>
             <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
-                <img src="assets/images/icons/money-back.svg" alt="Delivery" class="w-12 h-12 object-contain">
+                <img src="src/assets/images/icons/money-back.svg" alt="Delivery" class="w-12 h-12 object-contain">
                 <div>
                     <h4 class="font-medium capitalize text-lg">Money Rturns</h4>
                     <p class="text-gray-500 text-sm">30 days money returs</p>
                 </div>
             </div>
             <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
-                <img src="assets/images/icons/service-hours.svg" alt="Delivery" class="w-12 h-12 object-contain">
+                <img src="src/assets/images/icons/service-hours.svg" alt="Delivery" class="w-12 h-12 object-contain">
                 <div>
                     <h4 class="font-medium capitalize text-lg">24/7 Support</h4>
                     <p class="text-gray-500 text-sm">Customer support</p>
