@@ -1,5 +1,15 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
+import { onMounted, ref } from "@vue/runtime-core";
+import { useUserStore } from "./stores/user";
+const user = useUserStore();
+const logout = () => {
+  user.logOutUser()
+}
+// onMounted(e => {
+//   user.updateCart();
+// })
 </script>
 
 <template>
@@ -23,32 +33,35 @@ import { RouterLink, RouterView } from 'vue-router'
                     class="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition">Search</button>
             </div>
 
-            <div class="flex items-center space-x-4">
-                <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
-                    <div class="text-2xl">
-                        <i class="fa-regular fa-heart"></i>
-                    </div>
-                    <div class="text-xs leading-3">Wishlist</div>
-                    <div
-                        class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-                        8</div>
-                </a>
-                <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
-                    <div class="text-2xl">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                    </div>
-                    <div class="text-xs leading-3">Cart</div>
-                    <div
-                        class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-                        2</div>
-                </a>
-                <a href="/account" class="text-center text-gray-700 hover:text-primary transition relative">
-                    <div class="text-2xl">
-                        <i class="fa-regular fa-user"></i>
-                    </div>
-                    <div class="text-xs leading-3">Account</div>
-                </a>
-            </div>
+          <div class="flex items-center space-x-4">
+            <RouterLink to="/wishlist" class="text-center text-gray-700 hover:text-primary transition relative" activeClass="text-primary">
+              <div class="text-2xl">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <div class="text-xs leading-3">Wishlist</div>
+              <div
+                  class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
+                8
+              </div>
+            </RouterLink>
+            <RouterLink to="/cart" class="text-center text-gray-700 hover:text-primary transition relative" activeClass="text-primary">
+              <div class="text-2xl">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+              <div class="text-xs leading-3">Cart</div>
+              <div
+                  class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
+                <!-- {{ user.user }} -->
+<!--                {{ // user.cart ? user.cart.length : 0 }}-->
+              </div>
+            </RouterLink>
+            <RouterLink to="/account" class="text-center text-gray-700 hover:text-primary transition relative" activeClass="text-primary">
+              <div class="text-2xl">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="text-xs leading-3">Account</div>
+            </RouterLink>
+          </div>
         </div>
     </header>
     <!-- ./header -->
@@ -94,12 +107,22 @@ import { RouterLink, RouterView } from 'vue-router'
 
             <div class="flex items-center justify-between flex-grow pl-12">
                 <div class="flex items-center space-x-6 capitalize">
-                    <a href="/" class="text-gray-200 hover:text-white transition">Home</a>
-                    <a href="/shop" class="text-gray-200 hover:text-white transition">Shop</a>
-                    <a href="/about" class="text-gray-200 hover:text-white transition">About us</a>
-                    <a href="/contact-us" class="text-gray-200 hover:text-white transition">Contact us</a>
+                  <RouterLink to="/" class="text-gray-200 hover:text-white transition">Home</RouterLink>
+                  <RouterLink to="/shop" class="text-gray-200 hover:text-white transition">Shop</RouterLink>
+                  <RouterLink to="/about" class="text-gray-200 hover:text-white transition">About Us</RouterLink>
+                  <RouterLink to="/contact-us" class="text-gray-200 hover:text-white transition">Contact Us</RouterLink>
+                  <RouterLink to="/checkout" class="text-gray-200 hover:text-white transition">Checkout</RouterLink>
                 </div>
-                <a href="/login" class="text-gray-200 hover:text-white transition">Login</a>
+              <div>
+                <template v-if="user.user">
+                  <!-- <RouterLink @click.prevent="logout" to="/logout" class="text-gray-200 ml-4 hover:text-white transition" disabled>Logout</RouterLink> -->
+                  <a @click.prevent="logout" href="/logout" class="text-gray-200 ml-4 hover:text-white transition">Logout</a>
+                </template>
+                <template v-else>
+                  <RouterLink to="/login" class="text-gray-200 ml-4 hover:text-white transition">Login</RouterLink>
+                  <RouterLink to="/register" class="text-gray-200 ml-4 hover:text-white transition">Register</RouterLink>
+                </template>
+              </div>
             </div>
         </div>
     </nav>

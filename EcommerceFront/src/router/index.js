@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { useUserStore } from '../stores/user'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -115,10 +115,28 @@ const router = createRouter({
       name: 'notFound',
       component: () => import('../views/NotFoundView.vue'),
       meta: {
-        title: '404 - Final Project'
+        title: '404 - Ecommerce Project'
       }
     },
   ]
 })
+const DEFAULT_TITLE = 'Ecommerce Project';
+router.afterEach((to) => {
+  document.title = to.meta.title || DEFAULT_TITLE;
+});
+
+router.beforeEach((to, from, next) => {
+  const user = useUserStore().getUser;
+
+  if(!user && to.meta.Auth) {
+    router.push('/login')
+  }
+
+  // if(user && !user.otp_verified_at && to.meta.Auth ) {
+  //   router.push('/otp')
+  // }
+
+  next();
+});
 
 export default router
