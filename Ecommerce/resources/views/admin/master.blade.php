@@ -141,7 +141,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             <div class="user-panel pb-3 d-flex">
                                 <div class="image">
-                                    <img style="width: 1.8rem" src="{{ asset('admin_assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image') }}">
+                                    <img style="width: 1.8rem" src="https://ui-avatars.com/api/?background=random&name={{ Auth::user()->name }}" class="img-circle elevation-2" alt="User Image') }}">
                                 </div>
                                 <div class="info">
                                     {{ Auth::user()->name }}

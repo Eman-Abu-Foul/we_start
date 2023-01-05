@@ -62,7 +62,7 @@ class ProductController extends Controller
         try {
             $product = Product::create([
                 'name' => '',
-                'slug' => $slug,
+//                'slug' => $slug,
                 'smalldesc' => '',
                 'desc' => '',
                 'price' => $request->price,

@@ -30,5 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'hotsms' => [
+        'user' => env('HOTSMS_USER'),
+        'pass' => env('HOTSMS_PASS'),
+        'sender' => env('HOTSMS_SENDER')
+    ]
 
 ];

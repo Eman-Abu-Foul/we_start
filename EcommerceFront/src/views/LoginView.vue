@@ -18,7 +18,7 @@ const login = () => {
         error.value = res.data.message
         user.updateUser(res.data.data.user)
         user.updateToken(res.data.data.token)
-        // user.addCartToUser();
+        user.addCartToUser();
         router.push('/')
       })
 }

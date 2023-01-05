@@ -117,6 +117,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Ecommerce/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/Ecommerce/vendor/symfony/error-handler" />
       <excludeFolder url="file://$MODULE_DIR$/Ecommerce/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/Ecommerce/vendor/laravel/breeze" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

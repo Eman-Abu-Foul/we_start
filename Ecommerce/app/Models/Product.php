@@ -37,7 +37,7 @@ class Product extends Model
 
     public function coupons()
     {
-        return $this->hasMany(Coupon::class);
+        return $this->hasOne(Coupon::class);
     }
 
     public function carts()
@@ -49,4 +49,18 @@ class Product extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function getFinalPriceAttribute()
+    {
+        $coupon = $this->coupons;
+        if($coupon) {
+            if($coupon->type == 'value') {
+                return $this->price - $coupon->value;
+            }else {
+                return $this->price - (($coupon->value / 100) * $this->price);
+            }
+        }
+        return $this->price;
+    }
+
 }

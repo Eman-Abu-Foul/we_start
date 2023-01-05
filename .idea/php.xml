@@ -111,6 +111,7 @@
       <path value="$PROJECT_DIR$/Ecommerce/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/Ecommerce/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/Ecommerce/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/Ecommerce/vendor/laravel/breeze" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

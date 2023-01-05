@@ -3,12 +3,21 @@
 namespace App\Traits;
 
 trait Trans {
-    public function setNameAttribute()
+    public function setNameAttribute($value)
     {
-        $name = [
-            'en' => request()->en_name,
-            'ar' => request()->ar_name
-        ];
+        if(request()->en_name && request()->ar_name) {
+            $name = [
+                'en' => request()->en_name,
+                'ar' => request()->ar_name
+            ];
+        }else {
+            $value = json_decode($value, true);
+            $name = [
+                'en' => $value['en'],
+                'ar' => $value['ar']
+            ];
+        }
+
 
         $name = json_encode($name, JSON_UNESCAPED_UNICODE);
 
