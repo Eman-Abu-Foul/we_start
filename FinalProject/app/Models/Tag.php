@@ -13,4 +13,8 @@ class Tag extends Model
     {
         return $this->morphTo();
     }
+    public function skill()
+    {
+        return $this->belongsTo(Skill::class);
+    }
 }

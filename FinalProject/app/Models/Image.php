@@ -13,8 +13,9 @@ class Image extends Model
     {
         return $this->morphTo();
     }
-    public function work()
-    {
-        return $this->belongsTo(Work::class);
-    }
+
+//    public function work()
+//    {
+//        return $this->belongsTo(Work::class);
+//    }
 }

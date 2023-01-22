@@ -37,7 +37,7 @@
                                     <h3>Work details</h3>
                                 </div>
                                 <div class="col-xl-2">
-                                    <a href="{{ route('works.create') }}" class="button"><i class="icon-feather-edit"></i> Edit Work</a>
+                                    <a href="{{ route('works.edit',$work) }}" class="button"><i class="icon-feather-edit"></i> Edit Work</a>
                                 </div>
                             </div>
                         </div>
@@ -47,13 +47,22 @@
 
                                 <div class="col-xl-12">
                                     <div>
-                                        <img src="{{ asset($work->image[0]['path']) }}">
+                                        <img src="{{ asset($work->image->path) }}">
                                     </div>
                                 </div>
                                 <div class="col-xl-12 margin-top-15">
                                     <h3 class="margin-bottom-15">Description</h3>
                                     <p> {{ $work->description }}</p>
 
+                                </div>
+                                <div class="sidebar-widget">
+                                    <h3>Skills</h3>
+                                    <div class="task-tags">
+                                        @foreach($work->tag as $tag)
+                                            <span> {{ $tag->skill->name }} </span>
+                                        @endforeach
+
+                                    </div>
                                 </div>
 
 

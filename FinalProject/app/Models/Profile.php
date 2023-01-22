@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    public function skill()
+    public function tag()
     {
         return $this->morphMany(Tag::class, 'skillable');
     }

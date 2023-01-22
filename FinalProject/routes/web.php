@@ -2,7 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +39,17 @@ Route::middleware('auth:user')->group(function () {
     Route::get('/account/edit', [Controller::class, 'edit_account'])->name('edit.account');
     Route::put('/account/update', [Controller::class, 'update_account'])->name('update.account');
     Route::resource('works', WorkController::class);
+    Route::resource('profiles', ProfileController::class);
+    Route::resource('projects', ProjectController::class);
+    Route::resource('proposals', ProposalController::class);
+    Route::resource('contracts', ContractController::class);
+    Route::get('/all-project', [Controller::class, 'all_project'])->name('all_project');
+    Route::get('/show/{id}', [Controller::class, 'show_project'])->name('show_project');
+
+//    Route::get('/messages',[MessagesController::class,'getMessages'])->name('messages');
+    Route::get('/messages-show/{peer_id}',[MessagesController::class,'show']);
+
+    Route::post('/messages/store/{peer_id}',[MessagesController::class,'store']);
 
 });
 Route::middleware('auth:admin')->group(function () {

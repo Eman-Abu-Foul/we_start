@@ -9,13 +9,13 @@ class Work extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function skill()
+    public function tag()
     {
         return $this->morphMany(Tag::class, 'skillable');
     }
     public function image()
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
     public function user()
     {

@@ -15,9 +15,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <style>
 
-#wrapper {
-    padding-top: 30;
-}
 
 </style>
 </head>
@@ -48,7 +45,7 @@
                         <ul id="responsive">
 
                             <li><a href="{{ route('home') }}" class="current">Home</a></li>
-                            <li><a href="#" class="current">Browse Projects</a></li>
+                            <li><a href="{{ route('all_project') }}" class="current">Browse Projects</a></li>
                             <li><a href="#" class="current">Search Freelancers</a></li>
 
                         </ul>
@@ -61,7 +58,7 @@
                                 <ul id="responsive">
 
                                     <li><a href="{{ route('home') }}" class="current">Home</a></li>
-                                    <li><a href="#" class="current">Add Project</a></li>
+                                    <li><a href="{{ route('projects.create') }}" class="current">Add Project</a></li>
                                     <li><a href="#" class="current">Search Freelancers</a></li>
 
                                 </ul>
@@ -73,7 +70,7 @@
                                 <ul id="responsive">
 
                                     <li><a href="{{ route('home') }}" class="current">Home</a></li>
-                                    <li><a href="#" class="current">Browse Projects</a></li>
+                                    <li><a href="{{ route('all_project') }}" class="current">Browse Projects</a></li>
                                     <li><a href="{{ route('works.create') }}" class="current">Add Work</a></li>
 
                                 </ul>
@@ -118,74 +115,7 @@
 
 				<!--  User Notifications -->
 				<div class="header-widget hide-on-mobile">
-
-					<!-- Notifications -->
-					<div class="header-notifications">
-
-						<!-- Trigger -->
-						<div class="header-notifications-trigger">
-							<a href="#"><i class="icon-feather-bell"></i><span>4</span></a>
-						</div>
-
-						<!-- Dropdown -->
-						<div class="header-notifications-dropdown">
-
-							<div class="header-notifications-headline">
-								<h4>Notifications</h4>
-								<button class="mark-as-read ripple-effect-dark" title="Mark all as read" data-tippy-placement="left">
-									<i class="icon-feather-check-square"></i>
-								</button>
-							</div>
-
-							<div class="header-notifications-content">
-								<div class="header-notifications-scroll" data-simplebar>
-									<ul>
-										<!-- Notification -->
-										<li class="notifications-not-read">
-											<a href="">
-												<span class="notification-icon"><i class="icon-material-outline-group"></i></span>
-												<span class="notification-text">
-													<strong>Michael Shannah</strong> applied for a job <span class="color">Full Stack Software Engineer</span>
-												</span>
-											</a>
-										</li>
-
-										<!-- Notification -->
-										<li>
-											<a href="">
-												<span class="notification-icon"><i class=" icon-material-outline-gavel"></i></span>
-												<span class="notification-text">
-													<strong>Gilbert Allanis</strong> placed a bid on your <span class="color">iOS App Development</span> project
-												</span>
-											</a>
-										</li>
-
-										<!-- Notification -->
-										<li>
-											<a href="">
-												<span class="notification-icon"><i class="icon-material-outline-autorenew"></i></span>
-												<span class="notification-text">
-													Your job listing <span class="color">Full Stack PHP Developer</span> is expiring.
-												</span>
-											</a>
-										</li>
-
-										<!-- Notification -->
-										<li>
-											<a href="dashboard-manage-candidates.html">
-												<span class="notification-icon"><i class="icon-material-outline-group"></i></span>
-												<span class="notification-text">
-													<strong>Sindy Forrest</strong> applied for a job <span class="color">Full Stack Software Engineer</span>
-												</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
+                    <x-notification-menu count="5"/>
 
 					<!-- Messages -->
 					<div class="header-notifications">
@@ -208,7 +138,7 @@
 									<ul>
 										<!-- Notification -->
 										<li class="notifications-not-read">
-											<a href="dashboard-messages.html">
+											<a href="">
 												<span class="notification-avatar status-online"><img src="" alt=""></span>
 												<div class="notification-text">
 													<strong>David Peterson</strong>
@@ -218,34 +148,11 @@
 											</a>
 										</li>
 
-										<!-- Notification -->
-										<li class="notifications-not-read">
-											<a href="dashboard-messages.html">
-												<span class="notification-avatar status-offline"><img src="images/user-avatar-small-02.jpg" alt=""></span>
-												<div class="notification-text">
-													<strong>Sindy Forest</strong>
-													<p class="notification-msg-text">Hi Tom! Hate to break it to you, but I'm actually on vacation until...</p>
-													<span class="color">Yesterday</span>
-												</div>
-											</a>
-										</li>
-
-										<!-- Notification -->
-										<li class="notifications-not-read">
-											<a href="dashboard-messages.html">
-												<span class="notification-avatar status-online"><img src="images/user-avatar-placeholder.png" alt=""></span>
-												<div class="notification-text">
-													<strong>Marcin Kowalski</strong>
-													<p class="notification-msg-text">I received payment. Thanks for cooperation!</p>
-													<span class="color">Yesterday</span>
-												</div>
-											</a>
-										</li>
 									</ul>
 								</div>
 							</div>
 
-							<a href="dashboard-messages.html" class="header-notifications-button ripple-effect button-sliding-icon">View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
+							<a href="" class="header-notifications-button ripple-effect button-sliding-icon">View All Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
 						</div>
 					</div>
 
@@ -259,10 +166,10 @@
 					<div class="header-notifications user-menu">
 						<div class="header-notifications-trigger">
 							@auth('user')
-							<a href="#"><div class="user-avatar status-online"><img src="https://ui-avatars.com/api/?background=random&name={{ auth()->user()->fname }}" alt=""></div></a>
+							<a href="#"><div class="user-avatar status-online"><img src="{{ Auth::user()->image_url }}" alt=""></div></a>
 							@endauth
 							@auth('admin')
-							<a href="#"><div class="user-avatar status-online"><img src="https://ui-avatars.com/api/?background=random&name={{ auth()->user()->name }}" alt=""></div></a>
+							<a href="#"><div class="user-avatar status-online"><img src="{{ Auth::user()->image_url }}" alt=""></div></a>
 							@endauth
 						</div>
 
@@ -276,12 +183,12 @@
 								<div class="user-details">
 
 									@auth('user')
-									<a href="#"><div class="user-avatar status-online"><img src="https://ui-avatars.com/api/?background=random&name={{ auth()->user()->fname }}" alt=""></div></a>
+									<a href="#"><div class="user-avatar status-online"><img src="{{ Auth::user()->image_url }}" alt=""></div></a>
 									<div class="user-name">
 										{{ Auth::user()->fname }}{{ Auth::user()->lname }}<span>{{ Auth::user()->type }}</span></div>
 									@endauth
 									@auth('admin')
-									<a href="#"><div class="user-avatar status-online"><img src="https://ui-avatars.com/api/?background=random&name={{ auth()->user()->name }}" alt=""></div></a>
+									<a href="#"><div class="user-avatar status-online"><img src="{{ Auth::user()->image_url }}" alt=""></div></a>
 									<div class="user-name">
 										{{ Auth::user()->name }}<span>Admin</span></div>
 									@endauth

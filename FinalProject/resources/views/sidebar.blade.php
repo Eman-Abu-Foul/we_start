@@ -18,12 +18,7 @@
 				<!-- Navigation -->
 				<div class="dashboard-nav">
 					<div class="dashboard-nav-inner">
-                        @auth('user')
-                        <ul data-submenu-title="Settings">
-                            <li><a href="{{route('account')}}"><i class="icon-material-outline-account-circle"></i> Account</a></li>
-                            <li><a href=""><i class="icon-material-outline-person-pin"></i> Profile</a></li>
-                        </ul>
-                        @endauth
+
                         <ul data-submenu-title="Start">
                             @auth('admin')
                                 <li class="active"><a href="{{route('dashboard')}}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
@@ -49,7 +44,26 @@
 						</ul>
 						@endauth
 
+                        @auth('user')
+                            @if(Auth::user()->type == 'customer')
+                                <ul data-submenu-title="Organize and Manage">
+                                    <li><a href="#"><i class="icon-material-outline-assignment"></i> Project </a>
+                                        <ul>
+                                            <li><a href="{{ route('projects.index') }}">All Project</a></li>
+                                            <li><a href="{{ route('projects.create') }}">Create New Project</a></li>
+                                        </ul>
+                                    </li>
 
+                                </ul>
+
+                            @endif
+
+                            <ul data-submenu-title="Settings">
+                                <li><a href="{{route('account')}}"><i class="icon-material-outline-account-circle"></i> Account</a></li>
+                                @if(Auth::user()->type == 'freelancer')    <li><a href="{{route('profiles.index')}}"><i class="icon-material-outline-person-pin"></i> Profile</a></li> @endif
+                            </ul>
+
+                        @endauth
 
 					</div>
 				</div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Project;
+use App\Models\Proposal;
 use App\Models\User;
 use App\Models\Work;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -60,13 +62,37 @@ class Controller extends BaseController
             $user->fname = $request->fname;
             $user->lname = $request->lname;
             $user->phone = $request->phone;
-
             $isSaved = $user->save();
+
+            if($request->hasFile('image')) {
+                $image = $request->file('image')->store('uploads/images', 'custom');
+                $user->image()->updateOrCreate([
+                    'path' => $image,
+                ]);
+            }
+
+
 
             return response()->json(['message' => $isSaved ? 'Updated succsessfully' : 'Faield']
                 , $isSaved ? Response::HTTP_OK : Response::HTTP_BAD_REQUEST);
         } else {
             return response()->json(['message' => $validator->getMessageBag()->first()], Response::HTTP_BAD_REQUEST);
         }
+    }
+    public function all_project()
+    {
+        $projects = Project::latest('id')->paginate(10);
+        return view('front.allproject',[
+            'projects' => $projects
+        ]);
+    }
+    public function show_project($id){
+
+        $proposal = Proposal::where('project_id' , '=' , $id)->exists();
+        $project = Project::where('id',$id)->first();
+        return view('front.showproject',[
+            'project' => $project,
+            'proposal' => $proposal,
+        ]);
     }
 }

@@ -37,10 +37,9 @@
                                 <div class="row">
 
                                     <div class="col-auto" style="align-items: center;">
-                                        <div class="avatar-wrapper" data-tippy-placement="bottom" data-tippy="" data-original-title="Change Avatar">
-                                            <img class="profile-pic" src="https://ui-avatars.com/api/?background=random&name={{ auth()->user()->fname }}" alt="">
+                                        <div class="avatar-wrapper">
+                                            <img class="profile-pic" src="{{ Auth::user()->image_url }}" alt="">
                                             <div class="upload-button"></div>
-                                            <input class="file-upload" type="file" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="dashboard-headline">
@@ -59,7 +58,7 @@
 
                         </div>
                     </div>
-
+                @if(Auth::user()->type == 'freelancer')
                 <div class="col-xl-12 padding-bottom-50">
                     <div class="dashboard-box">
 
@@ -86,9 +85,8 @@
                                                     <div class="col-xl-4">
                                                         <a href="{{ route('works.show',$work->id) }}" class="company">
                                                             <div class="company-inner-alignment">
-{{--                                                                $work->image[0]['path']--}}
-                                                                <span class="company-logo"><img src="{{ asset($work->image[0]['path']) }}" alt=""></span>
 
+                                                                <span class="company-logo"><img src="{{ asset($work->image->path) }}" alt=""></span>
                                                                 <span class="company-not-rated">{{ $work->title }}</span>
                                                             </div>
                                                         </a>
@@ -109,7 +107,7 @@
                     </div>
                 </div>
 
-
+                @endif
                 <div class="clearfix"></div>
                 <!-- Main Navigation / End -->
 
