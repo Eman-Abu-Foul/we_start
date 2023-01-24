@@ -44,12 +44,14 @@ Route::middleware('auth:user')->group(function () {
     Route::resource('proposals', ProposalController::class);
     Route::resource('contracts', ContractController::class);
     Route::get('/all-project', [Controller::class, 'all_project'])->name('all_project');
+    Route::get('/all-freelancer', [Controller::class, 'all_freelancer'])->name('all_freelancer');
+    Route::get('/showfreelancer/{id}', [Controller::class, 'show_freelancer'])->name('show_freelancer');
     Route::get('/show/{id}', [Controller::class, 'show_project'])->name('show_project');
+    Route::get('/showcategory/{id}', [Controller::class, 'show_category'])->name('show_category');
 
-//    Route::get('/messages',[MessagesController::class,'getMessages'])->name('messages');
-    Route::get('/messages-show/{peer_id}',[MessagesController::class,'show']);
-
-    Route::post('/messages/store/{peer_id}',[MessagesController::class,'store']);
+    Route::get('/messages',[MessagesController::class,'index'])->name('messages');
+    Route::get('/messages/{peer_id}',[MessagesController::class,'show'])->name('messages.peer');
+    Route::post('/messages/{peer_id}',[MessagesController::class,'store']);
 
 });
 Route::middleware('auth:admin')->group(function () {

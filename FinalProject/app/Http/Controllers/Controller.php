@@ -23,8 +23,12 @@ class Controller extends BaseController
     public function home_page()
     {
         $categories = Category::limit(8)->get();
+        $projects = Project::latest('id')->paginate(10);
+        $freelancers = User::where('type', '=' , 'freelancer')->latest('id')->paginate(10);
         return view('index',[
-            'categories' => $categories
+            'categories' => $categories,
+            'freelancers' => $freelancers,
+            'projects' => $projects,
         ]);
     }
     public function dashboard()
@@ -95,4 +99,30 @@ class Controller extends BaseController
             'proposal' => $proposal,
         ]);
     }
+    public function all_freelancer()
+    {
+        $freelancers = User::where('type', '=' , 'freelancer')->latest('id')->paginate(10);
+        return view('front.allfreelancers',[
+            'freelancers' => $freelancers
+        ]);
+    }
+    public function show_freelancer($id){
+
+
+        $freelancer = User::where('id',$id)->first();
+
+        return view('front.showfreelancer',[
+            'freelancer' => $freelancer,
+
+        ]);
+    }
+    public function show_category($id){
+        $projects = Project::where('category_id',$id)->get();
+        return view('front.allproject',[
+            'projects' => $projects,
+        ]);
+
+    }
+
+
 }

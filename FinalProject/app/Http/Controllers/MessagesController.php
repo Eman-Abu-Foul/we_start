@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MessagesController extends Controller
 {
+    public function index(){
+        return view('front.messages');
+    }
     public function show($peer_id)
     {
         $user_id = Auth::id();
@@ -33,7 +37,8 @@ class MessagesController extends Controller
             'recipient_id' => $peer_id,
             'message' => $request->post('message'),
         ]);
-        return Response::json($messages,201);
+        broadcast(new MessageSent($messages));
+        return response()->json($messages,201);
 //        $validator = Validator($request->all(), [
 //            'message' => 'required|string',
 //        ]);

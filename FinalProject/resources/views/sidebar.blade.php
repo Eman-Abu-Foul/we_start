@@ -23,7 +23,7 @@
                             @auth('admin')
                                 <li class="active"><a href="{{route('dashboard')}}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
                             @endauth
-							<li><a href=""><i class="icon-material-outline-question-answer"></i> Messages <span class="nav-tag">2</span></a></li>
+							<li><a href="{{ route('messages') }}"><i class="icon-material-outline-question-answer"></i> Messages <span class="nav-tag">2</span></a></li>
 							<li><a href=""><i class="icon-material-outline-star-border"></i> Bookmarks</a></li>
 							<li><a href=""><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
 						</ul>

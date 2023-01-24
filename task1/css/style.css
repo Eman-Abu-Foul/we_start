@@ -131,7 +131,7 @@ header ul li{
  .card a.btn:hover{
      color:rgb(42, 63, 255);;
      background-color:#fff;
-     border-color: rgb(42, 63, 255);;
+     border-color: rgb(42, 63, 255);
  }
  .fmap{
     display: flex;
@@ -140,32 +140,34 @@ header ul li{
     border-radius: 5px;
     box-shadow: 0 0 15px rgb(206, 206, 206);
  }
+ .contact .wrapper>div{width:48%;
+
+}
  .map h1{
     text-align: center;
  }
  form{
-    padding-top: 50px;
+    padding-top: 30px;
  }
- form input {
-    background: #fff;
-    border: solid #6a6a6a 1px;
-    padding-top: 10px ;
-    margin: 35px;
-    width: 80%;
-    font-size: 18px;
-    text-transform: capitalize;
-    line-height: normal;
- }
- textarea{
-    background: #fff;
-    border: solid #6a6a6a 1px;
-    padding-top: 60px ;
-    margin: 35px;
-    width: 80%;
-    font-size: 18px;
-    text-transform: capitalize;
-    line-height: normal;
- }
+.map {
+    
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+ form input,form textarea{
+    
+    margin-bottom:20px;
+    
+    padding:10px 15px;
+    border:1px solid #eee;
+    border-radius:5px;
+    outline:0;
+    width:80%
+}
+
+        
  footer{
     background-color: #1a1818;
     color: #fff;
@@ -177,17 +179,19 @@ header ul li{
 
  .save{
     display: block;
-    background-color:#2f377c;
+    background-color:rgb(42, 63, 255);
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
+    margin-bottom: 30px;
+    width: 150px;
     text-align: center;
     color:#fff;
     border: 2px solid transparent;
     transition: all .3s ease;
 }
 .save:hover{
-    color:#2f377c;
+    color:rgb(42, 63, 255);
     background-color:#fff;
-    border-color: #2f377c;
+    border-color: rgb(42, 63, 255);
 }

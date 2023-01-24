@@ -34,14 +34,16 @@ class MessageSent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PresenceChannel('messages.' . $this->message->id);
+        return new PresenceChannel('messages');
     }
-//    public function broadcastAs()
-//    {
-//        return 'message.sent';
-//    }
+    public function broadcastAs()
+    {
+        return 'message.sent';
+    }
     public function broadcastWith()
     {
-        return $this->message->load('sender');
+        return [
+            'message' => $this->message->load('sender'),
+        ];
     }
 }

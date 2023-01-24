@@ -4,7 +4,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title> @yield('title', env('APP_NAME')) </title>
+{{--<title> @yield('title', env('APP_NAME')) </title>--}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -46,7 +46,7 @@
 
                             <li><a href="{{ route('home') }}" class="current">Home</a></li>
                             <li><a href="{{ route('all_project') }}" class="current">Browse Projects</a></li>
-                            <li><a href="#" class="current">Search Freelancers</a></li>
+                            <li><a href="{{ route('all_freelancer') }}" class="current">Search Freelancers</a></li>
 
                         </ul>
                     </nav>
@@ -59,7 +59,7 @@
 
                                     <li><a href="{{ route('home') }}" class="current">Home</a></li>
                                     <li><a href="{{ route('projects.create') }}" class="current">Add Project</a></li>
-                                    <li><a href="#" class="current">Search Freelancers</a></li>
+                                    <li><a href="{{ route('all_freelancer') }}" class="current">Search Freelancers</a></li>
 
                                 </ul>
                             </nav>
@@ -82,8 +82,8 @@
                             <ul id="responsive">
 
                                 <li><a href="{{ route('home') }}" class="current">Home</a></li>
-                                <li><a href="#" class="current">Browse Projects</a></li>
-                                <li><a href="#" class="current">Search Freelancers</a></li>
+                                <li><a href="{{ route('all_project') }}" class="current">Browse Projects</a></li>
+                                <li><a href="{{ route('all_freelancer') }}" class="current">Search Freelancers</a></li>
 
                             </ul>
                         </nav>
@@ -414,6 +414,8 @@
 <script src="{{ asset('assets/js/magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets/js/slick.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/messages.js') }}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
